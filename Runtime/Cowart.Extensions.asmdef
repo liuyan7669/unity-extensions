@@ -1,0 +1,7 @@
+{
+  "name": "Cowart.Extensions",
+  "rootNamespace": "Cowart.Extensions",
+  "references": [
+    "Unity.UGUI"
+  ]
+}

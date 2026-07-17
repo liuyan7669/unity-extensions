@@ -1,0 +1,32 @@
+{
+  "name": "com.cowart.extensions",
+  "version": "1.0.0",
+  "displayName": "Extensions",
+  "description": "提供常用的集合、字符串、Unity 对象和 UI 布局扩展方法。",
+  "unity": "2021.3",
+  "author": {
+    "name": "Cowart"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/liuyan7669/unity-extensions.git"
+  },
+  "dependencies": {
+    "com.unity.ugui": "1.0.0"
+  },
+  "keywords": [
+    "extensions",
+    "collection",
+    "string",
+    "ui",
+    "utility"
+  ],
+  "samples": [
+    {
+      "displayName": "Highlight Plus Integration",
+      "description": "依赖 Highlight Plus 和 Event Relays 的交互与高亮扩展。",
+      "path": "Samples~/Highlight Plus Integration"
+    }
+  ]
+}
