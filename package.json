@@ -1,8 +1,8 @@
 {
   "name": "com.cowart.extensions",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "displayName": "Extensions",
-  "description": "提供常用的集合、字符串、Unity 对象和 UI 布局扩展方法。",
+  "description": "提供集合、字符串、Unity 对象、Vector、Color 和 LayerMask 常用扩展方法。",
   "unity": "2021.3",
   "author": {
     "name": "Cowart"
@@ -12,14 +12,10 @@
     "type": "git",
     "url": "https://github.com/liuyan7669/unity-extensions.git"
   },
-  "dependencies": {
-    "com.unity.ugui": "1.0.0"
-  },
   "keywords": [
     "extensions",
     "collection",
     "string",
-    "ui",
     "utility"
   ],
   "samples": [

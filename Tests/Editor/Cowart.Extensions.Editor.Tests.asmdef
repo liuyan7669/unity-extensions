@@ -1,0 +1,12 @@
+{
+  "name": "Cowart.Extensions.Editor.Tests",
+  "references": [
+    "Cowart.Extensions"
+  ],
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ]
+}

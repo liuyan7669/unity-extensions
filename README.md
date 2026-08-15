@@ -1,6 +1,6 @@
 # Extensions
 
-Unity 常用扩展方法集合，涵盖集合、字符串、GameObject、Component、Transform 和 UGUI 布局处理。
+Unity 常用扩展方法集合，涵盖集合、字符串、GameObject、Component 和 Transform。
 
 所有方法统一使用 `Ext` 前缀，便于在 IntelliSense 中快速搜索并与其他扩展方法区分。
 
@@ -11,6 +11,10 @@ Unity 常用扩展方法集合，涵盖集合、字符串、GameObject、Compone
 - 在一条日志中输出集合数量、索引和内容
 - 从 `IReadOnlyList<T>` 随机获取元素
 - 从 `IReadOnlyList<T>` 随机获取有效索引
+- 判断集合是否为空并安全获取索引
+- 原地打乱、随机取出并删除元素
+- 按权重随机选择元素
+- 清理 null 或已经销毁的 Unity 对象
 - 对 null 和空集合进行安全处理
 
 ### 字符串扩展
@@ -19,6 +23,8 @@ Unity 常用扩展方法集合，涵盖集合、字符串、GameObject、Compone
 - 移除控制字符
 - 可选择保留换行、制表等格式空白
 - 同时移除空白和控制字符
+- 使用粗体、斜体、字号和颜色 Unity 富文本标签包裹字符串
+- 富文本颜色支持颜色名称、HTML 十六进制值和 `UnityEngine.Color`
 
 ### Unity 对象扩展
 
@@ -27,12 +33,15 @@ Unity 常用扩展方法集合，涵盖集合、字符串、GameObject、Compone
 - 单独复制位置或旋转
 - 仅在水平面朝向指定目标
 - 为 GameObject 或 Component 获取或添加指定组件
+- 重置本地 Transform、递归设置 Layer、递归查找子物体
+- 获取完整 Hierarchy 路径、清空子物体和计算合并 Renderer Bounds
+- 单独设置世界或本地位置的 X/Y/Z
 
-### UGUI 布局扩展
+### Vector、Color 和 LayerMask
 
-- 按子节点到父节点的顺序立即重建布局树
-- 下一帧重建目标附近的布局控制节点
-- 支持 `LayoutGroup` 和 `ContentSizeFitter`
+- 返回只改变或累加单个轴的 Vector2/Vector3
+- 修改 Color Alpha、生成十六进制颜色并解析 HTML 颜色
+- 判断、增加和移除 LayerMask 中的 Layer
 
 ## 安装
 
@@ -55,7 +64,7 @@ com.cowart.extensions
 ### 通过 Git URL 安装
 
 ```text
-https://github.com/liuyan7669/unity-extensions.git#1.0.0
+https://github.com/liuyan7669/unity-extensions.git#1.0.4
 ```
 
 ## 使用方法
@@ -72,6 +81,8 @@ List<string> names = new List<string> { "A", "B", "C" };
 names.ExtLogItems();
 string randomName = names.ExtGetRandomItem();
 int randomIndex = names.ExtGetRandomIndex();
+names.ExtShuffle();
+string removedName = names.ExtPopRandom();
 ```
 
 ### 字符串处理
@@ -92,6 +103,23 @@ string result = text.ExtIndentLines(
     indent: "    ");
 ```
 
+### 字符串富文本
+
+```csharp
+string bold = "重点".ExtRichBold();
+string italic = "说明".ExtRichItalic();
+string large = "标题".ExtRichSize(36);
+string red = "警告".ExtRichColor("red");
+string translucent = "提示".ExtRichColor(new Color(1f, 0.5f, 0f, 0.8f));
+
+string combined = "重要提示"
+    .ExtRichBold()
+    .ExtRichSize(32)
+    .ExtRichColor(Color.yellow);
+```
+
+这些方法只生成 Unity 富文本标签，不依赖 UGUI 或 TMP 组件。显示端仍需启用 Rich Text。`ExtRichColor(Color)` 默认包含 Alpha，可通过 `includeAlpha: false` 只输出 RGB。
+
 ### Unity 对象操作
 
 ```csharp
@@ -101,6 +129,10 @@ targetTransform.ExtCopyPoseFrom(referenceTransform);
 targetTransform.ExtCopyPositionFrom(referenceTransform);
 targetTransform.ExtCopyRotationFrom(referenceTransform);
 targetTransform.ExtLookAtHorizontal(referenceTransform);
+targetTransform.ExtResetLocal();
+targetTransform.gameObject.ExtSetLayerRecursive(7);
+Transform child = targetTransform.ExtFindChildRecursive("Target");
+string hierarchyPath = targetTransform.ExtGetHierarchyPath();
 ```
 
 ### 获取或添加组件
@@ -112,16 +144,9 @@ Rigidbody body = transform.ExtGetOrAddComponent<Rigidbody>();
 
 目标为 null 时返回 null；目标已包含组件时直接返回已有组件。
 
-### 重建 UGUI 布局
+## UI 布局扩展迁移
 
-```csharp
-RectTransform panel = GetComponent<RectTransform>();
-
-panel.ExtRebuildLayoutTree();
-panel.ExtRebuildNearestLayoutNextFrame(this);
-```
-
-延迟重建需要一个有效的 `MonoBehaviour` 启动协程；不传参数时会从目标父级自动查找。
+从 `1.0.1` 开始，`UILayoutExtensions` 已迁移到 UI Framework `1.0.3`。类名、方法名和全局命名空间保持不变；需要使用布局重建扩展时，请安装 `com.cowart.ui-framework`。
 
 ## Highlight Plus Integration Sample
 
@@ -159,19 +184,30 @@ Sample 未导入时不会参与编译，也不会要求项目安装 Highlight Pl
 | `ExtLogItems` | 输出集合内容 |
 | `ExtGetRandomItem` | 随机获取集合元素 |
 | `ExtGetRandomIndex` | 随机获取有效索引 |
+| `ExtShuffle` | 原地随机打乱列表 |
+| `ExtGetWeightedRandom` | 按权重随机获取元素 |
+| `ExtRemoveNullObjects` | 清理 Unity 空对象 |
 | `ExtIndentLines` | 为多行文本添加缩进 |
 | `ExtRemoveControlCharacters` | 移除控制字符 |
+| `ExtRichBold` | 生成粗体富文本 |
+| `ExtRichItalic` | 生成斜体富文本 |
+| `ExtRichSize` | 生成字号富文本 |
+| `ExtRichColor` | 使用字符串或 Color 生成颜色富文本 |
 | `ExtSetActive` | 设置 Component 所在对象的激活状态 |
 | `ExtCopyPoseFrom` | 复制位置和旋转 |
 | `ExtLookAtHorizontal` | 水平朝向目标 |
 | `ExtGetOrAddComponent` | 获取或添加组件 |
-| `ExtRebuildLayoutTree` | 立即重建布局树 |
-| `ExtRebuildNearestLayoutNextFrame` | 下一帧重建附近布局 |
+| `ExtResetLocal` | 重置本地 Transform |
+| `ExtSetLayerRecursive` | 递归设置 Layer |
+| `ExtFindChildRecursive` | 递归查找子节点 |
+| `ExtGetHierarchyPath` | 获取完整层级路径 |
+| `ExtWithX/Y/Z` | 修改 Vector 单个轴 |
+| `ExtWithAlpha` | 修改 Color Alpha |
+| `ExtContains` | 判断 LayerMask 是否包含 Layer |
 
 ## 环境要求
 
 - Unity 2021.3 或更高版本
-- Unity UI（`com.unity.ugui`）
 - Highlight Plus，仅在导入对应 Sample 时需要
 - Event Relays，仅在导入对应 Sample 时需要
 
