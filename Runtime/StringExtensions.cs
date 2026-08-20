@@ -144,6 +144,10 @@ public static class StringExtensions
     /// <summary>
     /// 按指定规则过滤字符串中的空白字符和控制字符。
     /// </summary>
+    /// <param name="text">要过滤的字符串。</param>
+    /// <param name="removeWhitespace">是否移除所有空白字符。</param>
+    /// <param name="preserveFormattingWhitespace">是否保留制表符、回车符和换行符。</param>
+    /// <returns>过滤后的字符串；输入为 null 或空字符串时原样返回。</returns>
     private static string FilterCharacters(string text, bool removeWhitespace, bool preserveFormattingWhitespace)
     {
         if (string.IsNullOrEmpty(text))
@@ -169,6 +173,10 @@ public static class StringExtensions
     }
 
     /// <summary>使用一对 Unity 富文本标签包裹非空字符串。</summary>
+    /// <param name="text">要包裹的字符串。</param>
+    /// <param name="openingTag">放在字符串前面的开始标签。</param>
+    /// <param name="closingTag">放在字符串后面的结束标签。</param>
+    /// <returns>包裹标签后的字符串；输入为 null 或空字符串时原样返回。</returns>
     private static string WrapRichText(string text, string openingTag, string closingTag)
     {
         if (string.IsNullOrEmpty(text))

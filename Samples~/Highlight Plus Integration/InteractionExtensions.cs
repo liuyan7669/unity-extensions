@@ -111,6 +111,8 @@ public static class InteractionExtensions
     /// <summary>
     /// 应用工具箱默认高亮样式和目标状态。
     /// </summary>
+    /// <param name="highlightEffect">要设置样式和状态的 HighlightEffect。</param>
+    /// <param name="highlighted">是否启用高亮。</param>
     private static void ApplyDefaultHighlightStyle(HighlightEffect highlightEffect, bool highlighted)
     {
         highlightEffect.SetHighlighted(highlighted);

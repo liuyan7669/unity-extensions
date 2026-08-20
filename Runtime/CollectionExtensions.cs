@@ -10,12 +10,20 @@ using Random = UnityEngine.Random;
 public static class CollectionExtensions
 {
     /// <summary>判断只读集合是否为 null 或不包含任何元素。</summary>
+    /// <typeparam name="T">集合元素类型。</typeparam>
+    /// <param name="items">要检查的只读集合。</param>
+    /// <returns>集合为 null 或不包含元素时返回 true，否则返回 false。</returns>
     public static bool ExtIsNullOrEmpty<T>(this IReadOnlyCollection<T> items)
     {
         return items == null || items.Count == 0;
     }
 
     /// <summary>安全获取指定索引的元素；索引无效时返回调用方提供的默认值。</summary>
+    /// <typeparam name="T">列表元素类型。</typeparam>
+    /// <param name="items">要读取的只读列表。</param>
+    /// <param name="index">要读取的从零开始的索引。</param>
+    /// <param name="defaultValue">列表为 null 或索引无效时返回的值。</param>
+    /// <returns>指定索引处的元素，或调用方提供的默认值。</returns>
     public static T ExtGetOrDefault<T>(
         this IReadOnlyList<T> items,
         int index,
@@ -88,6 +96,8 @@ public static class CollectionExtensions
     }
 
     /// <summary>使用 Fisher-Yates 算法原地随机打乱列表。</summary>
+    /// <typeparam name="T">列表元素类型。</typeparam>
+    /// <param name="items">要原地打乱的列表。</param>
     /// <returns>原列表，便于链式调用；目标为 null 时返回 null。</returns>
     public static IList<T> ExtShuffle<T>(this IList<T> items)
     {
@@ -113,6 +123,9 @@ public static class CollectionExtensions
     }
 
     /// <summary>随机取出并删除列表中的一个元素。</summary>
+    /// <typeparam name="T">列表元素类型。</typeparam>
+    /// <param name="items">要随机取出并删除元素的列表。</param>
+    /// <returns>被删除的随机元素；列表为 null 或空列表时返回类型默认值。</returns>
     public static T ExtPopRandom<T>(this IList<T> items)
     {
         if (items == null || items.Count == 0)
@@ -127,6 +140,10 @@ public static class CollectionExtensions
     }
 
     /// <summary>按元素权重随机获取一个值。</summary>
+    /// <typeparam name="T">列表元素类型。</typeparam>
+    /// <param name="items">要按权重随机取值的只读列表。</param>
+    /// <param name="weightSelector">返回元素权重的函数；非正数、NaN 和无穷大权重会被忽略。</param>
+    /// <returns>随机选中的元素；参数无效或没有有效权重时返回类型默认值。</returns>
     public static T ExtGetWeightedRandom<T>(
         this IReadOnlyList<T> items,
         Func<T, float> weightSelector)
@@ -176,6 +193,8 @@ public static class CollectionExtensions
     }
 
     /// <summary>从列表中移除 null 或已经销毁的 Unity 对象。</summary>
+    /// <typeparam name="T">Unity 对象类型。</typeparam>
+    /// <param name="items">要清理的 Unity 对象列表。</param>
     /// <returns>实际移除的元素数量。</returns>
     public static int ExtRemoveNullObjects<T>(this IList<T> items)
         where T : UnityEngine.Object

@@ -33,8 +33,10 @@ Unity 常用扩展方法集合，涵盖集合、字符串、GameObject、Compone
 - 单独复制位置或旋转
 - 仅在水平面朝向指定目标
 - 为 GameObject 或 Component 获取或添加指定组件
+- 批量添加组件，并在运行模式下移除一个或全部同类型组件
 - 重置本地 Transform、递归设置 Layer、递归查找子物体
 - 获取完整 Hierarchy 路径、清空子物体和计算合并 Renderer Bounds
+- 自动添加或更新能够包裹完整子层级的 BoxCollider
 - 单独设置世界或本地位置的 X/Y/Z
 
 ### Vector、Color 和 LayerMask
@@ -64,7 +66,7 @@ com.cowart.extensions
 ### 通过 Git URL 安装
 
 ```text
-https://github.com/liuyan7669/unity-extensions.git#1.0.4
+https://github.com/liuyan7669/unity-extensions.git#1.0.5
 ```
 
 ## 使用方法
@@ -144,6 +146,19 @@ Rigidbody body = transform.ExtGetOrAddComponent<Rigidbody>();
 
 目标为 null 时返回 null；目标已包含组件时直接返回已有组件。
 
+### 自动包裹层级的 BoxCollider
+
+```csharp
+BoxCollider collider = gameObject.ExtAddFittedBoxCollider();
+BoxCollider activeOnlyCollider = transform.ExtAddFittedBoxCollider(
+    includeInactive: false);
+```
+
+该方法会在调用时计算目标及全部子物体的 Renderer 和子级 3D Collider，
+将结果转换为目标物体的局部包围盒，然后添加或更新目标上的 BoxCollider。
+默认包含未激活子物体；目标已有的 BoxCollider 会被复用，子碰撞体不会被删除。
+这是运行时按需计算方法，层级或模型发生变化后需要再次调用，不会每帧自动更新。
+
 ## UI 布局扩展迁移
 
 从 `1.0.1` 开始，`UILayoutExtensions` 已迁移到 UI Framework `1.0.3`。类名、方法名和全局命名空间保持不变；需要使用布局重建扩展时，请安装 `com.cowart.ui-framework`。
@@ -197,6 +212,7 @@ Sample 未导入时不会参与编译，也不会要求项目安装 Highlight Pl
 | `ExtCopyPoseFrom` | 复制位置和旋转 |
 | `ExtLookAtHorizontal` | 水平朝向目标 |
 | `ExtGetOrAddComponent` | 获取或添加组件 |
+| `ExtAddFittedBoxCollider` | 添加或更新包裹完整子层级的 BoxCollider |
 | `ExtResetLocal` | 重置本地 Transform |
 | `ExtSetLayerRecursive` | 递归设置 Layer |
 | `ExtFindChildRecursive` | 递归查找子节点 |
@@ -207,7 +223,8 @@ Sample 未导入时不会参与编译，也不会要求项目安装 Highlight Pl
 
 ## 环境要求
 
-- Unity 2021.3 或更高版本
+- Unity 2019.4 或更高版本
+- Unity 3D Physics（通过包依赖自动引入）
 - Highlight Plus，仅在导入对应 Sample 时需要
 - Event Relays，仅在导入对应 Sample 时需要
 
