@@ -66,7 +66,7 @@ com.cowart.extensions
 ### 通过 Git URL 安装
 
 ```text
-https://github.com/liuyan7669/unity-extensions.git#1.0.5
+https://github.com/liuyan7669/unity-extensions.git#1.0.6
 ```
 
 ## 使用方法
