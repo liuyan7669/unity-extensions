@@ -1,12 +1,26 @@
 {
   "name": "Cowart.Extensions.Editor.Tests",
   "references": [
-    "Cowart.Extensions"
+    "Cowart.Extensions",
+    "UnityEngine.UI",
+    "Unity.TextMeshPro"
   ],
   "optionalUnityReferences": [
     "TestAssemblies"
   ],
   "includePlatforms": [
     "Editor"
+  ],
+  "versionDefines": [
+    {
+      "name": "com.unity.textmeshpro",
+      "expression": "",
+      "define": "COWART_TMP"
+    },
+    {
+      "name": "com.unity.ugui",
+      "expression": "2.0.0",
+      "define": "COWART_TMP"
+    }
   ]
 }

@@ -1,5 +1,33 @@
 # Changelog
 
+## [2.0.0] - 2026-11-08
+
+### 破坏性变更
+
+- 扩展方法前缀由 `Ext` 改为 `Cw`（Cowart），例如 `ExtShuffle` → `CwShuffle`、`ExtGetOrAddComponent` → `CwGetOrAddComponent`；方法名其余部分不变。
+- 全部扩展类移入 `Cowart.Extensions` 命名空间，调用方需要添加 `using Cowart.Extensions;`。
+- 按“独立扩展 + 组合扩展”重组 Runtime：`Runtime/Independent` 中每个扩展类只覆盖一个功能范围，其中的方法功能唯一、完整、独立、闭合，不调用其他扩展方法（同一方法的重载转发和递归除外）；`Runtime/GameObjectCompositeExtensions` 与 `Runtime/TransformCompositeExtensions` 存放由多个独立扩展组合而成的用法。
+- 拆分 `UnityObjectExtensions` 为 `TransformExtensions`、`HierarchyExtensions`、`ActiveStateExtensions`、`ObjectLifetimeExtensions`、`ComponentExtensions`、`BoundsExtensions`、`GameObjectCompositeExtensions` 和 `TransformCompositeExtensions`；拆分 `ValueExtensions` 为 `VectorExtensions`、`ColorExtensions` 和 `LayerExtensions`。`ExtSetLayerRecursive` 归入 `LayerExtensions`，`ExtSetChildrenActive` 归入 `ActiveStateExtensions`。
+- 包新增 `com.unity.ugui` 依赖，用于点击扩展的 EventSystem 接口。
+
+### 新增
+
+- `CwSetClickAction`：基于 `IPointerClickHandler` 设置左键点击回调，重复设置时替换，传入 null 时取消监听。
+- `CwTryGetHierarchyLocalBounds`：公开层级局部包围盒计算；`CwAddFittedBoxCollider` 改为由它和 `CwGetOrAddComponent` 组合实现，行为不变。
+- 迁入 UI Framework 2.0.0 移除的 UGUI/TMP 扩展（23 个方法名、33 个方法），统一为 `Cw` 前缀并按功能范围拆分：`RectTransformExtensions`、`GraphicExtensions`（`CwSetAlpha` 由 Image 放宽为 Graphic）、`CanvasGroupExtensions`、`SelectableExtensions`、`LayoutExtensions`、`UIEventExtensions`，以及组合扩展 `TextCompositeExtensions.CwSetText`。
+- `CwRebuildNearestLayoutNextFrame` 在目标于下一帧前被销毁时不再抛出空引用。
+- TextMesh Pro 改为可选依赖：通过 asmdef `versionDefines` 在存在 `com.unity.textmeshpro` 或 `com.unity.ugui` 2.x 时定义 `COWART_TMP`，TMP 相关扩展仅在此时编译。
+
+### Highlight Plus Integration 示例
+
+- 重构为“独立扩展 + 组合扩展”结构，移除对 Event Relays 的依赖；点击扩展移入包内 Runtime，示例只保留依赖 Highlight Plus 的部分。
+- `CwSetHighlight` 新增实体提亮、外发光和颜色参数，开启时描边带呼吸效果；新增组合扩展 `GameObjectHighlightCompositeExtensions.CwSetHighlightClick`。
+- 移除 `InteractionExtensions`（`ExtBindPointerDown` 及 Component 重载）。触发方式由指针按下改为完整点击，默认高亮样式由青色描边改为暖白描边。已导入的旧示例不受影响，重新导入前请调整调用代码。
+
+### 其他
+
+- 重新设计包图标。
+
 ## [1.0.6] - 2026-08-23
 
 - 新增包专用图标资源。
