@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.0.1] - 2026-11-08
+
+- 修复 Highlight Plus Integration 示例取消高亮时描边闪一下的问题：原先先恢复呼吸前的描边强度再淡出，描边会先跳到最亮；现在 `CwSetHighlight(false)` 和 `CwSetHighlightClick` 取消时立即关闭高亮，不经过淡出，物体原有的 `fadeOutDuration` 配置保持不变。
+- 示例默认样式不再设置 `fadeOutDuration`。
+
 ## [2.0.0] - 2026-11-08
 
 ### 破坏性变更

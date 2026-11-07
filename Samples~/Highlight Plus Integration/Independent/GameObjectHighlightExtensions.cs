@@ -9,7 +9,7 @@ namespace Cowart.Extensions
     {
         /// <summary>开启或关闭物体的高亮。开启时显示描边（带呼吸效果），可选外发光和表面提亮。</summary>
         /// <param name="target">目标物体，需要带 Renderer；为 null 时不执行任何操作。</param>
-        /// <param name="highlighted">true 开启高亮，false 关闭。</param>
+        /// <param name="highlighted">true 开启高亮（带淡入）；false 立即关闭，不经过淡出。</param>
         /// <param name="includeBody">开启时物体表面是否也整体提亮。</param>
         /// <param name="includeGlow">开启时是否在描边外显示柔和外发光。</param>
         /// <param name="color">描边、外发光和提亮统一使用的颜色；为 null 时使用默认的暖白描边、金色外发光和白色提亮。</param>
@@ -31,7 +31,6 @@ namespace Cowart.Extensions
                 // 新添加的组件使用统一的交互提示样式：浅色描边勾勒轮廓，柔和暖光缓慢呼吸，表面只轻微提亮。
                 effect = target.AddComponent<HighlightEffect>();
                 effect.fadeInDuration = 0.25f;
-                effect.fadeOutDuration = 0.2f;
 
                 effect.outline = 1f;
                 effect.outlineWidth = 0.6f;
@@ -66,12 +65,23 @@ namespace Cowart.Extensions
 
                 breath.enabled = true;
             }
-            else if (target.TryGetComponent(out CwHighlightBreath breath))
+            else
             {
-                breath.enabled = false;
+                if (target.TryGetComponent(out CwHighlightBreath breath))
+                {
+                    breath.enabled = false;
+                }
+
+                // 取消时立即关闭，不经过淡出：fadeOutDuration 为 0 时 Highlight Plus 会直接结束高亮。
+                // 只在本次调用中临时置 0，随后恢复，保留物体原有的淡出配置。
+                float fadeOutDuration = effect.fadeOutDuration;
+                effect.fadeOutDuration = 0f;
+                effect.highlighted = false;
+                effect.fadeOutDuration = fadeOutDuration;
+                return;
             }
 
-            effect.highlighted = highlighted;
+            effect.highlighted = true;
         }
     }
 }

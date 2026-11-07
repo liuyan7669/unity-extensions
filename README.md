@@ -63,7 +63,7 @@ com.cowart.extensions
 ### 通过 Git URL 安装
 
 ```text
-https://github.com/liuyan7669/unity-extensions.git#2.0.0
+https://github.com/liuyan7669/unity-extensions.git#2.0.1
 ```
 
 ## 使用方法
@@ -246,7 +246,7 @@ Highlight Plus Integration
 | 扩展方法 | 所在类 | 位置 | 说明 |
 | --- | --- | --- | --- |
 | `CwSetClickAction` | `GameObjectClickExtensions` | 包内 Runtime | 设置每次左键点击时的回调；重复设置时替换，传入 null 时取消监听 |
-| `CwSetHighlight` | `GameObjectHighlightExtensions` | Sample | 开启或取消高亮，可选实体提亮、外发光和统一颜色；开启时描边带呼吸效果 |
+| `CwSetHighlight` | `GameObjectHighlightExtensions` | Sample | 开启或取消高亮，可选实体提亮、外发光和统一颜色；开启时描边带呼吸效果，取消时立即关闭 |
 | `CwSetHighlightClick` | `GameObjectHighlightCompositeExtensions` | Sample | 高亮并等待一次点击，点击后自动取消高亮和监听，再执行回调 |
 
 ```csharp
