@@ -1,9 +1,10 @@
 using UnityEngine;
 
-namespace Cowart.Extensions
+namespace Cowart.CwExtensions
 {
     /// <summary>Transform 扩展：单个 Transform 的位置、旋转、缩放的重置、单轴赋值、复制和水平朝向，不涉及父子层级。</summary>
     /// <remarks>全部方法直接修改 Transform，目标为 null 时不执行任何操作。带 Rigidbody 的物体需要物理移动时，请改用 Rigidbody.MovePosition / MoveRotation。</remarks>
+    [UnityEngine.Scripting.APIUpdating.MovedFrom(true, sourceNamespace: "Cowart.Extensions", sourceAssembly: "Cowart.Extensions", sourceClassName: "TransformExtensions")]
     public static class TransformExtensions
     {
         /// <summary>把本地位置设为 (0, 0, 0)，使物体与父节点原点重合；没有父节点时即世界原点。</summary>

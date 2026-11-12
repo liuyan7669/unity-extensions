@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.0] - 2026-11-12
+
+### 破坏性变更
+
+- `com.cowart.extensions` 改为 `com.cowart.cw-extensions`；更新业务项目的安装地址、程序集和源码引用。
+- 完成包标识、目录、程序集、命名空间、脚本及文档改名，保持资源 GUID 和包独立性。
+
 ## [2.0.1] - 2026-11-08
 
 - 修复 Highlight Plus Integration 示例取消高亮时描边闪一下的问题：原先先恢复呼吸前的描边强度再淡出，描边会先跳到最亮；现在 `CwSetHighlight(false)` 和 `CwSetHighlightClick` 取消时立即关闭高亮，不经过淡出，物体原有的 `fadeOutDuration` 配置保持不变。
@@ -10,7 +17,7 @@
 ### 破坏性变更
 
 - 扩展方法前缀由 `Ext` 改为 `Cw`（Cowart），例如 `ExtShuffle` → `CwShuffle`、`ExtGetOrAddComponent` → `CwGetOrAddComponent`；方法名其余部分不变。
-- 全部扩展类移入 `Cowart.Extensions` 命名空间，调用方需要添加 `using Cowart.Extensions;`。
+- 全部扩展类移入 `Cowart.CwExtensions` 命名空间，调用方需要添加 `using Cowart.CwExtensions;`。
 - 按“独立扩展 + 组合扩展”重组 Runtime：`Runtime/Independent` 中每个扩展类只覆盖一个功能范围，其中的方法功能唯一、完整、独立、闭合，不调用其他扩展方法（同一方法的重载转发和递归除外）；`Runtime/GameObjectCompositeExtensions` 与 `Runtime/TransformCompositeExtensions` 存放由多个独立扩展组合而成的用法。
 - 拆分 `UnityObjectExtensions` 为 `TransformExtensions`、`HierarchyExtensions`、`ActiveStateExtensions`、`ObjectLifetimeExtensions`、`ComponentExtensions`、`BoundsExtensions`、`GameObjectCompositeExtensions` 和 `TransformCompositeExtensions`；拆分 `ValueExtensions` 为 `VectorExtensions`、`ColorExtensions` 和 `LayerExtensions`。`ExtSetLayerRecursive` 归入 `LayerExtensions`，`ExtSetChildrenActive` 归入 `ActiveStateExtensions`。
 - 包新增 `com.unity.ugui` 依赖，用于点击扩展的 EventSystem 接口。

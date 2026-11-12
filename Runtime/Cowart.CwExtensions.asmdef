@@ -1,15 +1,9 @@
 {
-  "name": "Cowart.Extensions.Editor.Tests",
+  "name": "Cowart.CwExtensions",
+  "rootNamespace": "Cowart.CwExtensions",
   "references": [
-    "Cowart.Extensions",
     "UnityEngine.UI",
     "Unity.TextMeshPro"
-  ],
-  "optionalUnityReferences": [
-    "TestAssemblies"
-  ],
-  "includePlatforms": [
-    "Editor"
   ],
   "versionDefines": [
     {

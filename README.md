@@ -2,7 +2,7 @@
 
 Unity 常用扩展方法集合，涵盖集合、字符串、Transform、层级、组件、包围盒、点击回调、Vector、Color、LayerMask，以及 UGUI 的 RectTransform、布局重建、UI 事件和 TextMesh Pro 事件。
 
-所有扩展方法统一使用 `Cw`（Cowart）前缀，与 Unity 和项目自身的普通方法明确区分，在 IntelliSense 中输入 `Cw` 即可列出全部 Cowart 扩展；全部类型位于 `Cowart.Extensions` 命名空间。
+所有扩展方法统一使用 `Cw`（Cowart）前缀，与 Unity 和项目自身的普通方法明确区分，在 IntelliSense 中输入 `Cw` 即可列出全部 Cowart 扩展；全部类型位于 `Cowart.CwExtensions` 命名空间。
 
 ## 结构
 
@@ -51,19 +51,19 @@ TextMesh Pro 为可选依赖：项目包含 `com.unity.textmeshpro`（或 Unity 
 ```text
 Name: package.openupm.com
 URL: https://package.openupm.com
-Scope: com.cowart.extensions
+Scope: com.cowart.cw-extensions
 ```
 
 然后通过 `Add package by name` 安装：
 
 ```text
-com.cowart.extensions
+com.cowart.cw-extensions
 ```
 
 ### 通过 Git URL 安装
 
 ```text
-https://github.com/liuyan7669/unity-extensions.git#2.0.1
+https://github.com/liuyan7669/unity-cw-extensions.git#3.0.0
 ```
 
 ## 使用方法
@@ -71,7 +71,7 @@ https://github.com/liuyan7669/unity-extensions.git#2.0.1
 在使用扩展的脚本中添加命名空间：
 
 ```csharp
-using Cowart.Extensions;
+using Cowart.CwExtensions;
 ```
 
 从 1.x 升级时：
@@ -510,3 +510,11 @@ Sample 未导入时不会参与编译，也不会要求项目安装 Highlight Pl
 ## 许可证
 
 本包使用 MIT License，详情参见仓库中的许可证文件。
+
+## 改名迁移（3.0.0）
+
+- 包标识：`com.cowart.extensions` → `com.cowart.cw-extensions`。
+- Git 仓库：`https://github.com/liuyan7669/unity-extensions.git` → `https://github.com/liuyan7669/unity-cw-extensions.git`；原有提交和旧 tag 保留。
+- 程序集、命名空间、示例和测试已同步使用新名称。业务项目需更新 manifest、asmdef 和 using；旧包与新包不可同时安装。
+- 资源 .meta GUID 保留；已改命名空间的运行时类型提供 MovedFrom 迁移标记。已有源码仍需按新命名空间修改。
+- 示例中的可选集成依赖保持可选，核心包不新增其他 Cowart 包依赖。

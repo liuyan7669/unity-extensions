@@ -2,7 +2,7 @@ using HighlightPlus;
 using UnityEngine;
 using QualityLevel = HighlightPlus.QualityLevel;
 
-namespace Cowart.Extensions
+namespace Cowart.CwExtensions
 {
     /// <summary>为场景物体提供高亮控制扩展。此扩展类依赖 Highlight Plus。</summary>
     public static class GameObjectHighlightExtensions

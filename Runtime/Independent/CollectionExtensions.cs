@@ -4,12 +4,13 @@ using System.Text;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Cowart.Extensions
+namespace Cowart.CwExtensions
 {
     /// <summary>
     /// 集合扩展：判空、安全索引、日志输出、随机取值、原地打乱、随机弹出、按权重随机和清理已销毁对象。
     /// </summary>
     /// <remarks>随机相关方法使用 UnityEngine.Random，只能在主线程调用，结果受 Random.InitState 影响。</remarks>
+    [UnityEngine.Scripting.APIUpdating.MovedFrom(true, sourceNamespace: "Cowart.Extensions", sourceAssembly: "Cowart.Extensions", sourceClassName: "CollectionExtensions")]
     public static class CollectionExtensions
     {
         /// <summary>判断集合是否为 null 或不包含任何元素。</summary>

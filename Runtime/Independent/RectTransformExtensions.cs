@@ -1,11 +1,12 @@
 using UnityEngine;
 
-namespace Cowart.Extensions
+namespace Cowart.CwExtensions
 {
     /// <summary>
     /// RectTransform 扩展：获取 UI 组件的 RectTransform、锚点坐标与尺寸的单轴赋值、保持视觉位置修改 Pivot。
     /// </summary>
     /// <remarks>受 LayoutGroup 或 ContentSizeFitter 控制的元素，位置和尺寸会在下次布局重建时被覆盖。</remarks>
+    [UnityEngine.Scripting.APIUpdating.MovedFrom(true, sourceNamespace: "Cowart.Extensions", sourceAssembly: "Cowart.Extensions", sourceClassName: "RectTransformExtensions")]
     public static class RectTransformExtensions
     {
         /// <summary>获取组件所在物体的 RectTransform。</summary>

@@ -7,7 +7,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Cowart.Extensions
+namespace Cowart.CwExtensions
 {
     /// <summary>
     /// UI 事件扩展：用 System.Action 设置 UGUI 组件、EventTrigger 和 TMP 组件（项目包含 TextMesh Pro 时）的事件监听。
@@ -21,6 +21,7 @@ namespace Cowart.Extensions
     /// <item>目标为 null 时不执行任何操作。</item>
     /// </list>
     /// </remarks>
+    [UnityEngine.Scripting.APIUpdating.MovedFrom(true, sourceNamespace: "Cowart.Extensions", sourceAssembly: "Cowart.Extensions", sourceClassName: "UIEventExtensions")]
     public static class UIEventExtensions
     {
         /// <summary>设置 Button 的点击事件 onClick。</summary>

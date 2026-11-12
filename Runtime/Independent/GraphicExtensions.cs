@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Cowart.Extensions
+namespace Cowart.CwExtensions
 {
     /// <summary>
     /// Graphic 扩展：修改 UI 图形颜色的透明度并保留原有 RGB。
     /// </summary>
+    [UnityEngine.Scripting.APIUpdating.MovedFrom(true, sourceNamespace: "Cowart.Extensions", sourceAssembly: "Cowart.Extensions", sourceClassName: "GraphicExtensions")]
     public static class GraphicExtensions
     {
         /// <summary>只修改 Graphic（Image、RawImage、Text 等）颜色的透明度，保留原有 RGB。</summary>

@@ -2,11 +2,12 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Cowart.Extensions
+namespace Cowart.CwExtensions
 {
     /// <summary>将物体的左键点击转发给当前回调。由 <see cref="GameObjectClickExtensions"/> 自动添加和管理。</summary>
     [DisallowMultipleComponent]
     [AddComponentMenu("")]
+    [UnityEngine.Scripting.APIUpdating.MovedFrom(true, sourceNamespace: "Cowart.Extensions", sourceAssembly: "Cowart.Extensions", sourceClassName: "CwClickAction")]
     internal sealed class CwClickAction : MonoBehaviour, IPointerClickHandler
     {
         /// <summary>每次点击时执行的回调。</summary>

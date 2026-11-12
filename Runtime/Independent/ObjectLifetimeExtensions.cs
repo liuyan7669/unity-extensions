@@ -1,10 +1,11 @@
 using UnityEngine;
 
-namespace Cowart.Extensions
+namespace Cowart.CwExtensions
 {
     /// <summary>
     /// 对象生命周期扩展：在运行模式下安全销毁 UnityEngine.Object。
     /// </summary>
+    [UnityEngine.Scripting.APIUpdating.MovedFrom(true, sourceNamespace: "Cowart.Extensions", sourceAssembly: "Cowart.Extensions", sourceClassName: "ObjectLifetimeExtensions")]
     public static class ObjectLifetimeExtensions
     {
         /// <summary>在运行模式下销毁场景中的对象（GameObject 或组件），销毁在当前帧末生效。</summary>

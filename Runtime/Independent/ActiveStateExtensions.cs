@@ -1,10 +1,11 @@
 using UnityEngine;
 
-namespace Cowart.Extensions
+namespace Cowart.CwExtensions
 {
     /// <summary>
     /// 激活状态扩展：设置、切换游戏对象自身及其直接子物体的 activeSelf。
     /// </summary>
+    [UnityEngine.Scripting.APIUpdating.MovedFrom(true, sourceNamespace: "Cowart.Extensions", sourceAssembly: "Cowart.Extensions", sourceClassName: "ActiveStateExtensions")]
     public static class ActiveStateExtensions
     {
         /// <summary>设置组件所在物体的激活状态（activeSelf），省去 .gameObject。</summary>

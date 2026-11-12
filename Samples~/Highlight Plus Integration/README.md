@@ -1,6 +1,6 @@
 # Highlight Plus Integration
 
-导入此示例前，请先安装 Highlight Plus。示例中的类型位于 `Cowart.Extensions` 命名空间。
+导入此示例前，请先安装 Highlight Plus。示例中的类型位于 `Cowart.CwExtensions` 命名空间。
 
 示例结构：
 

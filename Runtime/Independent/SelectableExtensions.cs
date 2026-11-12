@@ -1,10 +1,11 @@
 using UnityEngine.UI;
 
-namespace Cowart.Extensions
+namespace Cowart.CwExtensions
 {
     /// <summary>
     /// Selectable 扩展：关闭键盘和手柄导航。
     /// </summary>
+    [UnityEngine.Scripting.APIUpdating.MovedFrom(true, sourceNamespace: "Cowart.Extensions", sourceAssembly: "Cowart.Extensions", sourceClassName: "SelectableExtensions")]
     public static class SelectableExtensions
     {
         /// <summary>把 Selectable（Button、Toggle、InputField 等）的导航模式设为 None，方向键和手柄无法再移动焦点到它或从它移出。</summary>

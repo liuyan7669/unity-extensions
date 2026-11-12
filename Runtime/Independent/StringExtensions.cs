@@ -3,12 +3,13 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
-namespace Cowart.Extensions
+namespace Cowart.CwExtensions
 {
     /// <summary>
     /// 字符串扩展：多行缩进、过滤控制字符和空白、生成 Unity 富文本标签。
     /// </summary>
     /// <remarks>富文本方法只拼接标签，显示端需要开启 Rich Text（UGUI Text 的 Rich Text 选项，TMP 默认开启）才会生效，否则标签会原样显示。</remarks>
+    [UnityEngine.Scripting.APIUpdating.MovedFrom(true, sourceNamespace: "Cowart.Extensions", sourceAssembly: "Cowart.Extensions", sourceClassName: "StringExtensions")]
     public static class StringExtensions
     {
         /// <summary>在每一行开头插入缩进，常用于中文段落首行缩进。</summary>

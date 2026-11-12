@@ -1,11 +1,12 @@
 using System;
 using UnityEngine;
 
-namespace Cowart.Extensions
+namespace Cowart.CwExtensions
 {
     /// <summary>
     /// 层级结构扩展：按名称递归查找子节点、获取层级路径、清空直接子物体。
     /// </summary>
+    [UnityEngine.Scripting.APIUpdating.MovedFrom(true, sourceNamespace: "Cowart.Extensions", sourceAssembly: "Cowart.Extensions", sourceClassName: "HierarchyExtensions")]
     public static class HierarchyExtensions
     {
         /// <summary>按名称在全部子孙节点中深度优先查找第一个匹配的节点，未激活的物体也会被找到。</summary>

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Cowart.Extensions
+namespace Cowart.CwExtensions
 {
     /// <summary>存放依赖 Highlight Plus 的组合扩展：由包内点击扩展和本示例的高亮扩展组合而成。</summary>
     public static class GameObjectHighlightCompositeExtensions

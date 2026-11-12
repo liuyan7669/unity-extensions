@@ -1,10 +1,11 @@
 using UnityEngine;
 
-namespace Cowart.Extensions
+namespace Cowart.CwExtensions
 {
     /// <summary>
     /// 提供颜色 Alpha 修改、十六进制转换和颜色字符串解析扩展。
     /// </summary>
+    [UnityEngine.Scripting.APIUpdating.MovedFrom(true, sourceNamespace: "Cowart.Extensions", sourceAssembly: "Cowart.Extensions", sourceClassName: "ColorExtensions")]
     public static class ColorExtensions
     {
         /// <summary>返回只修改透明度的新颜色，原值不变。</summary>

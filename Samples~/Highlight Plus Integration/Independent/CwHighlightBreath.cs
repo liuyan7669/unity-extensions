@@ -1,7 +1,7 @@
 using HighlightPlus;
 using UnityEngine;
 
-namespace Cowart.Extensions
+namespace Cowart.CwExtensions
 {
     /// <summary>让物体的高亮描边平滑明暗交替，形成呼吸效果。由 <see cref="GameObjectHighlightExtensions"/> 自动添加和管理。</summary>
     [DisallowMultipleComponent]

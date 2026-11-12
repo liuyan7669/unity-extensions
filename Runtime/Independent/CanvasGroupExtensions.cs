@@ -1,10 +1,11 @@
 using UnityEngine;
 
-namespace Cowart.Extensions
+namespace Cowart.CwExtensions
 {
     /// <summary>
     /// CanvasGroup 扩展：一次设置透明度、交互和射线拦截状态。
     /// </summary>
+    [UnityEngine.Scripting.APIUpdating.MovedFrom(true, sourceNamespace: "Cowart.Extensions", sourceAssembly: "Cowart.Extensions", sourceClassName: "CanvasGroupExtensions")]
     public static class CanvasGroupExtensions
     {
         /// <summary>一次设置 CanvasGroup 的透明度、可交互和射线拦截，常用于整体显示、隐藏或禁用一组 UI。</summary>

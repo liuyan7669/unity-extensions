@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Cowart.Extensions;
+using Cowart.CwExtensions;
 using NUnit.Framework;
 using UnityEngine;
 

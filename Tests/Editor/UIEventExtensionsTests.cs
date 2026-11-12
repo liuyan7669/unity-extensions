@@ -9,7 +9,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Cowart.Extensions.Tests
+namespace Cowart.CwExtensions.Tests
 {
     public sealed class UIEventExtensionsTests
     {

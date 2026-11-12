@@ -1,10 +1,11 @@
 using System;
 using UnityEngine;
 
-namespace Cowart.Extensions
+namespace Cowart.CwExtensions
 {
     /// <summary>Layer 扩展：判断、添加和移除 LayerMask 中的 Layer，以及为整个层级递归设置 Layer。</summary>
     /// <remarks>LayerMask 是值类型，CwAddLayer 和 CwRemoveLayer 返回新值，需要接收返回值，例如 mask = mask.CwAddLayer(8)。</remarks>
+    [UnityEngine.Scripting.APIUpdating.MovedFrom(true, sourceNamespace: "Cowart.Extensions", sourceAssembly: "Cowart.Extensions", sourceClassName: "LayerExtensions")]
     public static class LayerExtensions
     {
         /// <summary>判断 LayerMask 是否包含指定 Layer。</summary>

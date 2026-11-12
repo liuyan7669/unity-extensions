@@ -1,9 +1,10 @@
 using UnityEngine;
 
-namespace Cowart.Extensions
+namespace Cowart.CwExtensions
 {
     /// <summary>Vector 扩展：返回替换或累加单个分量后的新 Vector2 / Vector3。</summary>
     /// <remarks>Vector 是值类型，方法返回新值、不修改原值，需要接收返回值，例如 transform.position = transform.position.CwWithY(0f)。</remarks>
+    [UnityEngine.Scripting.APIUpdating.MovedFrom(true, sourceNamespace: "Cowart.Extensions", sourceAssembly: "Cowart.Extensions", sourceClassName: "VectorExtensions")]
     public static class VectorExtensions
     {
         /// <summary>返回把 X 分量替换为 x 的新 Vector2。</summary>

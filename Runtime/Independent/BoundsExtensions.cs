@@ -1,10 +1,11 @@
 using UnityEngine;
 
-namespace Cowart.Extensions
+namespace Cowart.CwExtensions
 {
     /// <summary>
     /// 提供层级 Renderer 世界包围盒和层级局部包围盒计算扩展。
     /// </summary>
+    [UnityEngine.Scripting.APIUpdating.MovedFrom(true, sourceNamespace: "Cowart.Extensions", sourceAssembly: "Cowart.Extensions", sourceClassName: "BoundsExtensions")]
     public static class BoundsExtensions
     {
         /// <summary>计算 target 及全部子孙物体上所有 Renderer 的世界空间合并包围盒（轴对齐）。</summary>

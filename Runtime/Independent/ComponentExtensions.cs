@@ -1,11 +1,12 @@
 using System;
 using UnityEngine;
 
-namespace Cowart.Extensions
+namespace Cowart.CwExtensions
 {
     /// <summary>
     /// 组件扩展：获取或添加组件、获取必需组件、从自身向子级或父级查找组件、批量添加组件和运行时安全移除组件。
     /// </summary>
+    [UnityEngine.Scripting.APIUpdating.MovedFrom(true, sourceNamespace: "Cowart.Extensions", sourceAssembly: "Cowart.Extensions", sourceClassName: "ComponentExtensions")]
     public static class ComponentExtensions
     {
         /// <summary>获取物体上的 T 组件，没有时自动添加一个。</summary>

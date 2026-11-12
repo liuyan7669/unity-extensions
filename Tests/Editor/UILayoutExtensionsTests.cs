@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Cowart.Extensions.Tests
+namespace Cowart.CwExtensions.Tests
 {
     public sealed class UILayoutExtensionsTests
     {

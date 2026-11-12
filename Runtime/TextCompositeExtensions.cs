@@ -3,11 +3,12 @@ using UnityEngine.UI;
 using TMPro;
 #endif
 
-namespace Cowart.Extensions
+namespace Cowart.CwExtensions
 {
     /// <summary>
     /// 存放由多个独立扩展组合而成的文本扩展方法：设置文本，并通过 <see cref="ActiveStateExtensions.CwSetActive"/> 按内容控制显隐。
     /// </summary>
+    [UnityEngine.Scripting.APIUpdating.MovedFrom(true, sourceNamespace: "Cowart.Extensions", sourceAssembly: "Cowart.Extensions", sourceClassName: "TextCompositeExtensions")]
     public static class TextCompositeExtensions
     {
         /// <summary>设置 UGUI Text 文本，并可根据内容是否为空控制物体显隐。</summary>

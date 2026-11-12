@@ -2,11 +2,12 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Cowart.Extensions
+namespace Cowart.CwExtensions
 {
     /// <summary>
     /// UGUI 布局扩展：立即重建整个布局树，或在下一帧重建最近的布局控制节点。用于刷新 ScrollRect 内容等动态布局。
     /// </summary>
+    [UnityEngine.Scripting.APIUpdating.MovedFrom(true, sourceNamespace: "Cowart.Extensions", sourceAssembly: "Cowart.Extensions", sourceClassName: "LayoutExtensions")]
     public static class LayoutExtensions
     {
         /// <summary>立即重建以 root 为根的整个布局树（先子节点、后父节点），调用后即可读取正确的尺寸和位置。</summary>

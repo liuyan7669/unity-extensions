@@ -1,10 +1,11 @@
 using UnityEngine;
 
-namespace Cowart.Extensions
+namespace Cowart.CwExtensions
 {
     /// <summary>
     /// 存放由多个独立扩展组合而成的游戏对象扩展方法；只依赖 Unity 内置模块。
     /// </summary>
+    [UnityEngine.Scripting.APIUpdating.MovedFrom(true, sourceNamespace: "Cowart.Extensions", sourceAssembly: "Cowart.Extensions", sourceClassName: "GameObjectCompositeExtensions")]
     public static class GameObjectCompositeExtensions
     {
         private const float MinimumColliderSize = 0.001f;

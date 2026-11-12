@@ -1,10 +1,11 @@
 using UnityEngine;
 
-namespace Cowart.Extensions
+namespace Cowart.CwExtensions
 {
     /// <summary>
     /// 存放由多个独立扩展组合而成的 Transform 扩展方法；只依赖 Unity 内置模块。
     /// </summary>
+    [UnityEngine.Scripting.APIUpdating.MovedFrom(true, sourceNamespace: "Cowart.Extensions", sourceAssembly: "Cowart.Extensions", sourceClassName: "TransformCompositeExtensions")]
     public static class TransformCompositeExtensions
     {
         /// <summary>把 target 设为 parent 的子物体，并把本地位置、旋转、缩放重置为默认值，常用于把生成的物体挂到挂点上。</summary>
