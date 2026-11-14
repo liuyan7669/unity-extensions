@@ -1,12 +1,13 @@
 {
   "name": "com.cowart.cw-extensions",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "displayName": "Cw Extensions",
   "description": "按“独立扩展 + 组合扩展”组织、统一 Cw 前缀的 Unity 常用扩展方法：集合、字符串、Transform、层级、组件、包围盒、点击回调、Vector、Color、Layer，以及 UGUI 矩形、布局重建、UI 与 TextMesh Pro 事件。依赖第三方插件的扩展以 Sample 形式提供。",
   "unity": "2019.4",
   "dependencies": {
     "com.unity.modules.physics": "1.0.0",
-    "com.unity.ugui": "1.0.0"
+    "com.unity.ugui": "1.0.0",
+    "com.cowart.inspector-groups": "3.1.0"
   },
   "author": {
     "name": "Cowart"

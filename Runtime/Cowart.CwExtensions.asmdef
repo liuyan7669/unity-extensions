@@ -3,7 +3,8 @@
   "rootNamespace": "Cowart.CwExtensions",
   "references": [
     "UnityEngine.UI",
-    "Unity.TextMeshPro"
+    "Unity.TextMeshPro",
+    "Cowart.InspectorGroups"
   ],
   "versionDefines": [
     {
